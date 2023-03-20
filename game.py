@@ -5,7 +5,7 @@ from datetime import datetime
 operators = ["+", "-", "*", "/"]
 # Cantidad de cuentas a resolver
 times = 5
-cantCorrectos = 0
+cantCorrectos = 0 #cantidad de intentos correctos
 # Contador inicial de tiempo.
 # Esto toma la fecha y hora actual.
 init_time = datetime.now()
@@ -15,8 +15,8 @@ for i in range(0, times):
     number_1 = randrange(10)
     number_2 = randrange(10)
     operator = choice(operators)
-    while ((operator == "/") and (number_2 == 0)) :
-          number_2 = randrange (10)
+    while ((operator == "/") and (number_2 == 0)) : #caso division por cero
+          number_2 = randrange (9) + 1
 
 # Se imprime la cuenta.
     print(f"{i+1}- ¿Cuánto es {number_1} {operator} {number_2}?")
@@ -24,6 +24,7 @@ for i in range(0, times):
     result = input("resultado: ")
 
     print(result)
+    # A continuacion se calcula el resultado correcto de la operacion 
     match operator :
         case "+" : 
             resCorrecto = number_1 + number_2
@@ -34,7 +35,7 @@ for i in range(0, times):
         case "/" : 
             resCorrecto = number_1 / number_2
     
-    if (float(result) == resCorrecto) : 
+    if (float(result) == resCorrecto) : #Comparacion resultado correcto con resultado ingresado por usuario
         print ("El resultado es correcto")
         cantCorrectos += 1
     else :
